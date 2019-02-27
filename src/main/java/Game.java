@@ -1,4 +1,6 @@
 import com.googlecode.lanterna.TextCharacter;
+import com.googlecode.lanterna.input.KeyStroke;
+import com.googlecode.lanterna.input.KeyType;
 import com.googlecode.lanterna.screen.Screen;
 import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
@@ -9,6 +11,8 @@ import java.io.IOException;
 public class Game {
 
     private Screen screen;
+    private Hero hero;
+    private boolean end;
 
     public Game() {
 
@@ -21,6 +25,9 @@ public class Game {
             this.screen.startScreen();
             this.screen.doResizeIfNecessary();
 
+            this.hero = new Hero(10, 10);
+            this.end = false;
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -30,18 +37,56 @@ public class Game {
     private void draw() throws IOException {
 
         this.screen.clear();
-        this.screen.setCharacter(10, 10, new TextCharacter('X'));
+        this.hero.draw(this.screen);
         this.screen.refresh();
 
     }
 
-    public void run() {
-        try {
+    public void run() throws IOException {
+
+        while (true) {
             this.draw();
-        } catch (IOException e) {
-            e.printStackTrace();
+            KeyStroke key = this.screen.readInput();
+            if (key.getKeyType() == KeyType.EOF) {
+                break;
+            }
+            this.processKey(key);
         }
+
     }
 
+    private void processKey(KeyStroke key) throws IOException {
+
+        // System.out.println(key);
+
+        switch(key.getKeyType()) {
+
+            case Character:
+                if (key.getCharacter() == 'q') {
+                    this.screen.close();
+                }
+
+                break;
+
+            case ArrowUp:
+                this.hero.moveUp();
+                break;
+
+            case ArrowDown:
+                this.hero.moveDown();
+                break;
+
+            case ArrowLeft:
+                this.hero.moveLeft();
+                break;
+
+            case ArrowRight:
+                this.hero.moveRight();
+                break;
+
+            default:
+                break;
+        }
+    }
 
 }
