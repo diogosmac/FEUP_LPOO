@@ -10,8 +10,8 @@ import java.io.IOException;
 public class Game {
 
     private Screen screen;
-    private Hero hero;
     private boolean end;
+    private Arena arena;
 
     public Game() {
 
@@ -23,9 +23,7 @@ public class Game {
             this.screen.setCursorPosition(null);
             this.screen.startScreen();
             this.screen.doResizeIfNecessary();
-
-            this.hero = new Hero(10, 10);
-            this.end = false;
+            this.arena = new Arena();
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -36,61 +34,27 @@ public class Game {
     private void draw() throws IOException {
 
         this.screen.clear();
-        this.hero.draw(this.screen);
+        this.arena.draw(screen.newTextGraphics());
         this.screen.refresh();
 
     }
 
-    private void moveHero(Position position) {
-        hero.setPosition(position);
+    private void processKey(KeyStroke key) throws IOException {
+        arena.processKey(key);
     }
-
 
     public void run() throws IOException {
 
         while (true) {
             this.draw();
             KeyStroke key = this.screen.readInput();
+            if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'q') {
+                this.screen.close();
+            }
             if (key.getKeyType() == KeyType.EOF) {
                 break;
             }
             this.processKey(key);
-        }
-
-    }
-
-    private void processKey(KeyStroke key) throws IOException {
-
-        // System.out.println(key);
-
-        switch(key.getKeyType()) {
-
-            case Character:
-                if (key.getCharacter() == 'q') {
-                    this.screen.close();
-                }
-
-                break;
-
-            case ArrowUp:
-                this.hero.setPosition(this.hero.moveUp());
-                break;
-
-            case ArrowDown:
-                this.hero.setPosition(this.hero.moveDown());
-                break;
-
-            case ArrowLeft:
-                this.hero.setPosition(this.hero.moveLeft());
-                break;
-
-            case ArrowRight:
-                this.hero.setPosition(this.hero.moveRight());
-                break;
-
-            default:
-                break;
-
         }
 
     }
