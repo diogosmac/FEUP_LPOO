@@ -7,12 +7,14 @@ import com.googlecode.lanterna.input.KeyStroke;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Arena {
     private int width;
     private int height;
     private Hero hero;
     private List<Wall> walls;
+    private List<Coin> coins;
 
     public Arena() {
         this(80, 24);
@@ -23,6 +25,7 @@ public class Arena {
         this.height = height;
         this.hero = new Hero(10, 10);
         this.walls = createWalls();
+        this.coins = createCoins();
     }
 
     private List<Wall> createWalls() {
@@ -39,6 +42,35 @@ public class Arena {
         }
 
         return walls;
+    }
+
+    private List<Coin> createCoins() {
+        Random random = new Random();
+        ArrayList<Coin> coins = new ArrayList<>();
+
+        for (int i = 0; i < 5; i++) {
+
+            Coin coin = new Coin(random.nextInt(width - 2) + 1, random.nextInt(height - 2) + 1);
+            boolean check = true;
+            for (Coin c : coins) {
+                if (c.getPosition().equals(coin.getPosition())) {
+                    check = false;
+                    break;
+                }
+            }
+            if (hero.getPosition().equals(coin.getPosition())) {
+                check = false;
+            }
+            if (check) {
+                coins.add(coin);
+            }
+            else {
+                i--;
+            }
+
+        }
+
+        return coins;
     }
 
     private boolean canHeroMove(Position position) {
@@ -61,6 +93,16 @@ public class Arena {
     private void moveHero(Position position) {
         if (canHeroMove(position)) {
             hero.setPosition(position);
+        }
+        retrieveCoins();
+    }
+
+    private void retrieveCoins() {
+        for (Coin coin : coins) {
+            if (hero.getPosition().equals(coin.getPosition())) {
+                coins.remove(coin);
+                break;
+            }
         }
     }
 
@@ -97,7 +139,13 @@ public class Arena {
         graphics.setBackgroundColor(TextColor.Factory.fromString("#336699"));
         graphics.fillRectangle(new TerminalPosition(0, 0), new TerminalSize(width, height), ' ');
         // graphics.fillRectangle(new TerminalPosition(0, 0), new TerminalSize(width * 2, height * 2), ' ');
+
+        for (Coin coin : coins) {
+            coin.draw(graphics);
+        }
+
         this.hero.draw(graphics);
+
         for (Wall wall : walls) {
             wall.draw(graphics);
         }
