@@ -15,6 +15,8 @@ public class Arena {
     private Hero hero;
     private List<Wall> walls;
     private List<Coin> coins;
+    private List<Monster> monsters;
+    public boolean end;
 
     public Arena() {
         this(80, 24);
@@ -26,6 +28,8 @@ public class Arena {
         this.hero = new Hero(10, 10);
         this.walls = createWalls();
         this.coins = createCoins();
+        this.monsters = createMonsters();
+        this.end = false;
     }
 
     private List<Wall> createWalls() {
@@ -73,7 +77,35 @@ public class Arena {
         return coins;
     }
 
-    private boolean canHeroMove(Position position) {
+    private List<Monster> createMonsters() {
+        Random random = new Random();
+        ArrayList<Monster> monsters = new ArrayList<>();
+
+        for (int i = 0; i < 5; i++) {
+            Monster monster = new Monster(random.nextInt(width - 2) + 1, random.nextInt(height - 2) + 1);
+            boolean check = true;
+            for (Monster m : monsters) {
+                if (m.getPosition().equals(monster.getPosition())) {
+                    check = false;
+                    break;
+                }
+            }
+            if (hero.getPosition().equals(monster.getPosition())) {
+                check = false;
+            }
+            if (check) {
+                monsters.add(monster);
+            }
+            else {
+                i--;
+            }
+
+        }
+
+        return monsters;
+    }
+
+    private boolean canElementMove(Position position) {
         if (position.getX() < 1 || position.getX() > width - 2) {
             return false;
         }
@@ -91,10 +123,49 @@ public class Arena {
     }
 
     private void moveHero(Position position) {
-        if (canHeroMove(position)) {
+        if (canElementMove(position)) {
             hero.setPosition(position);
         }
         retrieveCoins();
+    }
+
+    private void moveMonsters() {
+        Random random = new Random();
+        for (Monster m : monsters) {
+            int dir = random.nextInt(4) + 1;
+            switch(dir) {
+                case 1:
+                    if (canElementMove(m.moveUp()))
+                        m.setPosition(m.moveUp());
+                    break;
+
+                case 2:
+                    if (canElementMove(m.moveDown()))
+                        m.setPosition(m.moveDown());
+                    break;
+
+                case 3:
+                    if (canElementMove(m.moveLeft()))
+                        m.setPosition(m.moveLeft());
+                    break;
+
+                case 4:
+                    if (canElementMove(m.moveRight()))
+                        m.setPosition(m.moveRight());
+                    break;
+
+                default: break;
+            }
+        }
+    }
+
+    private boolean verifyMonsterCollisions() {
+        for (Monster monster : monsters) {
+            if (hero.getPosition().equals(monster.getPosition())) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private void retrieveCoins() {
@@ -110,7 +181,20 @@ public class Arena {
 
         // System.out.println(key);
 
+        moveMonsters();
+
+        if (verifyMonsterCollisions()) {
+            end = true;
+            System.out.println("You are dead. Thanks Obama.");
+        }
+
         switch(key.getKeyType()) {
+
+            case Character:
+                if (key.getCharacter() == 'q') {
+                    end = true;
+                }
+                break;
 
             case ArrowUp:
                 moveHero(hero.moveUp());
@@ -133,6 +217,12 @@ public class Arena {
 
         }
 
+        if (verifyMonsterCollisions()) {
+            end = true;
+            System.out.println("You are dead. Thanks Obama.");
+        }
+
+
     }
 
     public void draw(TextGraphics graphics) {
@@ -145,6 +235,10 @@ public class Arena {
         }
 
         this.hero.draw(graphics);
+
+        for (Monster monster : monsters) {
+            monster.draw(graphics);
+        }
 
         for (Wall wall : walls) {
             wall.draw(graphics);

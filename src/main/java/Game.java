@@ -10,7 +10,6 @@ import java.io.IOException;
 public class Game {
 
     private Screen screen;
-    private boolean end;
     private Arena arena;
 
     public Game() {
@@ -48,13 +47,13 @@ public class Game {
         while (true) {
             this.draw();
             KeyStroke key = this.screen.readInput();
-            if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'q') {
-                this.screen.close();
-            }
             if (key.getKeyType() == KeyType.EOF) {
                 break;
             }
             this.processKey(key);
+            if (arena.end) {
+                this.screen.close();
+            }
         }
 
     }
