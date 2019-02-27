@@ -1,4 +1,3 @@
-import com.googlecode.lanterna.TextCharacter;
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
 import com.googlecode.lanterna.screen.Screen;
@@ -42,6 +41,11 @@ public class Game {
 
     }
 
+    private void moveHero(Position position) {
+        hero.setPosition(position);
+    }
+
+
     public void run() throws IOException {
 
         while (true) {
@@ -69,24 +73,26 @@ public class Game {
                 break;
 
             case ArrowUp:
-                this.hero.moveUp();
+                this.hero.setPosition(this.hero.moveUp());
                 break;
 
             case ArrowDown:
-                this.hero.moveDown();
+                this.hero.setPosition(this.hero.moveDown());
                 break;
 
             case ArrowLeft:
-                this.hero.moveLeft();
+                this.hero.setPosition(this.hero.moveLeft());
                 break;
 
             case ArrowRight:
-                this.hero.moveRight();
+                this.hero.setPosition(this.hero.moveRight());
                 break;
 
             default:
                 break;
+
         }
+
     }
 
 }
