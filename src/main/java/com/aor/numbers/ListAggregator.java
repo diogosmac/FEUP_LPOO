@@ -31,10 +31,12 @@ public class ListAggregator {
      * @return The maximum value in the list.
      */
     public Integer max() {
-        int max = list.get(0);
+        Integer max = null;
 
         for (Integer number : list)
-            if (number > max)
+            if (max == null)
+                max = number;
+            else if (number > max)
                 max = number;
 
         return max;
@@ -58,9 +60,9 @@ public class ListAggregator {
      * Counts the number of distinct numbers in a list.
      * @return The number of distinct numbers.
      */
-    public int distinct() {
-        ListDeduplicator deduplicator = new ListDeduplicator(list);
-        List<Integer> distinct = deduplicator.deduplicate();
+    public int distinct(IListDeduplicator deduplicator) {
+        // ListDeduplicator deduplicator = new ListDeduplicator(list);
+        List<Integer> distinct = deduplicator.deduplicate(new ListSorter(list));
 
         return distinct.size();
     }
