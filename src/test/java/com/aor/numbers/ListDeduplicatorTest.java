@@ -9,20 +9,30 @@ import static org.junit.Assert.*;
 
 public class ListDeduplicatorTest {
 
-    @Test
-    public void deduplicate() {
+    public List<Integer> listHelper() {
         List<Integer> list = new ArrayList<>();
         list.add(1);
         list.add(2);
         list.add(4);
         list.add(2);
         list.add(5);
+        return list;
+    }
 
-        List<Integer> expected = new ArrayList<>();
-        expected.add(1);
-        expected.add(2);
-        expected.add(4);
-        expected.add(5);
+    public List<Integer> expectedHelper() {
+        List<Integer> list = new ArrayList<>();
+        list.add(1);
+        list.add(2);
+        list.add(4);
+        list.add(5);
+        return list;
+    }
+
+    @Test
+    public void deduplicate() {
+        List<Integer> list = listHelper();
+
+        List<Integer> expected = expectedHelper();
 
         ListDeduplicator deduplicator = new ListDeduplicator(list);
         List<Integer> distinct = deduplicator.deduplicate();
