@@ -108,6 +108,5 @@ public class ListDeduplicatorTest {
         List<Integer> distinctMockito = deduplicator.deduplicate(new ListSorter(list));
 
         assertEquals(expected, distinctMockito);
-
     }
 }
