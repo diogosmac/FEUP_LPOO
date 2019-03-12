@@ -1,13 +1,16 @@
 package com.aor.numbers;
 
 import org.junit.Test;
-
+import org.mockito.Mockito;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static org.junit.Assert.*;
 
 public class ListAggregatorTest {
+
+    private ListAggregator mockAggregator;
 
     public List<Integer> helper() {
         List<Integer> list = new ArrayList<>();
@@ -88,6 +91,18 @@ public class ListAggregatorTest {
         int distinct = aggregator.distinct(new StubListDistinct());
 
         assertEquals(4, distinct);
+
+        // -----------------------------------------------------------------
+
+        List<Integer> deduplicated = new ArrayList<>();
+        Collections.addAll(deduplicated, 1, 2, 4, 5);
+
+        IListDeduplicator deduplicator = Mockito.mock(IListDeduplicator.class);
+        Mockito.when(deduplicator.deduplicate(new ListSorter(list))).thenReturn(deduplicated);
+
+        int distinctMockito = aggregator.distinct(new ListDeduplicator(list));
+
+        assertEquals(4, distinctMockito);
     }
 
     class StubListDistinctAlt implements IListDeduplicator {
@@ -114,6 +129,18 @@ public class ListAggregatorTest {
         int distinct = aggregator.distinct(new StubListDistinctAlt());
 
         assertEquals(3, distinct);
+
+        // -----------------------------------------------------------------
+
+        List<Integer> deduplicated = new ArrayList<>();
+        Collections.addAll(deduplicated, 1, 2, 4);
+
+        IListDeduplicator deduplicator = Mockito.mock(IListDeduplicator.class);
+        Mockito.when(deduplicator.deduplicate(new ListSorter(list))).thenReturn(deduplicated);
+
+        int distinctMockito = aggregator.distinct(new ListDeduplicator(list));
+
+        assertEquals(3, distinctMockito);
     }
 
 }

@@ -1,8 +1,10 @@
 package com.aor.numbers;
 
 import org.junit.Test;
+import org.mockito.Mockito;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -51,6 +53,18 @@ public class ListDeduplicatorTest {
         List<Integer> distinct = deduplicator.deduplicate(new StubListDeduplicate());
 
         assertEquals(expected, distinct);
+
+        // -----------------------------------------------------------------
+
+        List<Integer> sorted = new ArrayList<>();
+        Collections.addAll(sorted, 1, 2, 2, 4, 5);
+
+        IListSorter sorter = Mockito.mock(IListSorter.class);
+        Mockito.when(sorter.sort()).thenReturn(sorted);
+
+        List<Integer> distinctMockito = deduplicator.deduplicate(new ListSorter(list));
+
+        assertEquals(expected, distinctMockito);
     }
 
     class StubListDeduplicateAlt implements IListSorter {
@@ -82,5 +96,18 @@ public class ListDeduplicatorTest {
         List<Integer> distinct = deduplicator.deduplicate(new StubListDeduplicateAlt());
 
         assertEquals(expected, distinct);
+
+        // -----------------------------------------------------------------
+
+        List<Integer> sorted = new ArrayList<>();
+        Collections.addAll(sorted, 1, 2, 4);
+
+        IListSorter sorter = Mockito.mock(IListSorter.class);
+        Mockito.when(sorter.sort()).thenReturn(sorted);
+
+        List<Integer> distinctMockito = deduplicator.deduplicate(new ListSorter(list));
+
+        assertEquals(expected, distinctMockito);
+
     }
 }
