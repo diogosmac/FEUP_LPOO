@@ -27,6 +27,10 @@ public class Application {
         // aggregator.addShape(sixth);
         // ^^^ CAN'T BE DONE ^^^
 
+        House seventh = new House(350);
+        aggregator.addShape(seventh);
+        System.out.println(stringOutputter.output());
+
         AreaXMLOutputter xmlOutputter = new AreaXMLOutputter(aggregator);
         System.out.println(xmlOutputter.outputXML());
     }
