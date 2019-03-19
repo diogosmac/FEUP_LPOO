@@ -1,7 +1,7 @@
 public class Circle implements AreaShape {
     private Integer radius;
 
-    public Circle(int r) { this.radius = r; }
+    public Circle(int radius) { this.radius = radius; }
 
     public Integer getRadius() { return radius; }
 

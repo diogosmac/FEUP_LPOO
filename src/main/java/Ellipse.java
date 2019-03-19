@@ -2,9 +2,9 @@ public class Ellipse implements AreaShape {
     private Integer x_radius;
     private Integer y_radius;
 
-    public Ellipse(int x, int y) {
-        this.x_radius = x;
-        this.y_radius = x;
+    public Ellipse(int x_radius, int y_radius) {
+        this.x_radius = x_radius;
+        this.y_radius = y_radius;
     }
 
     public Integer getX_radius() {

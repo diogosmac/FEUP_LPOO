@@ -1,7 +1,7 @@
 public class Line implements Shape {
     private Integer length;
 
-    public Line(int l) { this.length = l; }
+    public Line(int length) { this.length = length; }
 
     public Integer getLength() {
         return length;

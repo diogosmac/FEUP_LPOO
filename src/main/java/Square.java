@@ -1,7 +1,7 @@
 public class Square implements AreaShape {
     private Integer side;
 
-    public Square(int s) { this.side = s; }
+    public Square(int side) { this.side = side; }
 
     public Integer getSide() { return side; }
 

@@ -2,9 +2,9 @@ public class Triangle implements AreaShape {
     private Integer base;
     private Integer height;
 
-    public Triangle(int b, int h) {
-        this.base = b;
-        this.height = h;
+    public Triangle(int base, int height) {
+        this.base = base;
+        this.height = height;
     }
 
     public double getArea() {
