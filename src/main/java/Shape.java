@@ -1,3 +1,3 @@
-public abstract class Shape {
-    public Shape() {}
+public interface Shape {
+    double getArea();
 }
