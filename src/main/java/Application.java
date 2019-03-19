@@ -22,6 +22,11 @@ public class Application {
         aggregator.addShape(fifth);
         System.out.println(stringOutputter.output());
 
+        Line sixth = new Line(3);
+        System.out.println("Line length: " + sixth.getLength());
+        // aggregator.addShape(sixth);
+        // ^^^ CAN'T BE DONE ^^^
+
         AreaXMLOutputter xmlOutputter = new AreaXMLOutputter(aggregator);
         System.out.println(xmlOutputter.outputXML());
     }
