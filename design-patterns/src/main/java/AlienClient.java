@@ -17,9 +17,6 @@ public abstract class AlienClient implements Client {
 
     @Override
     public void wants(StringRecipe recipe, StringBar bar) {
-        bar.addObserver(this);
-        bar.notifyObservers();
-
         strategy.wants(recipe, bar);
     }
 
