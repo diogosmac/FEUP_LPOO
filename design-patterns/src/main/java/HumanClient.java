@@ -16,6 +16,7 @@ public class HumanClient implements Client {
     public void wants(StringRecipe recipe, StringBar bar) {
         bar.addObserver(this);
         bar.notifyObservers();
+
         strategy.wants(recipe, bar);
     }
 }

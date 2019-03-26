@@ -11,6 +11,7 @@ public class SmartStrategy implements OrderingStrategy {
     }
 
     public void wants(StringRecipe recipe, StringBar bar) {
+
         if (happyHour) {
             bar.order(recipe);
         }

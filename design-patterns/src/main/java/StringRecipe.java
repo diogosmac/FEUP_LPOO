@@ -12,4 +12,8 @@ public class StringRecipe {
             transformer.execute();
         }
     }
+
+    public List<StringTransformer> getTransformers() {
+        return transformers;
+    }
 }
