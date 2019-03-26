@@ -25,6 +25,11 @@ public class Bar {
     }
 
     public void addObserver(BarObserver observer) {
+        for (BarObserver client : observers) {
+            if (observer.equals(client)) {
+                return;
+            }
+        }
         observers.add(observer);
     }
 
