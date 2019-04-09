@@ -18,11 +18,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/aor/refactoring/example6/Tree.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="395">
-              <caret line="77" column="4" selection-start-line="77" selection-start-column="4" selection-end-line="77" selection-end-column="4" />
+            <state relative-caret-position="290">
+              <caret line="77" selection-start-line="77" selection-end-line="77" />
               <folding>
                 <element signature="e#764#765#0" expanded="true" />
                 <element signature="e#795#796#0" expanded="true" />
@@ -31,6 +31,11 @@
               </folding>
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -195,7 +200,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554208323269" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554208372925" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
@@ -208,6 +213,9 @@
       <recent name="com.aor.refactoring.example5" />
       <recent name="com.aor.refactoring.example3" />
       <recent name="com.aor.refactoring.example2" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\2º Ano - 2º Semestre\LPOO\refactoring" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -263,9 +271,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Tests_in_'com_aor_refactoring_refactoring_test' - 2019.04.02 at 12h 16m 45s.xml">
-      <configuration name="Tests in 'com.aor.refactoring.refactoring.test'" configurationId="GradleRunConfiguration" />
-    </history-entry>
     <history-entry file="Tests_in_'com_aor_refactoring_refactoring_test' - 2019.04.02 at 12h 19m 35s.xml">
       <configuration name="Tests in 'com.aor.refactoring.refactoring.test'" configurationId="GradleRunConfiguration" />
     </history-entry>
@@ -293,10 +298,12 @@
     <history-entry file="Tests_in_'com_aor_refactoring_refactoring_test' - 2019.04.02 at 13h 27m 06s.xml">
       <configuration name="Tests in 'com.aor.refactoring.refactoring.test'" configurationId="GradleRunConfiguration" />
     </history-entry>
+    <history-entry file="Tests_in_'com_aor_refactoring_refactoring_test' - 2019.04.02 at 13h 32m 26s.xml">
+      <configuration name="Tests in 'com.aor.refactoring.refactoring.test'" configurationId="GradleRunConfiguration" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="960" y="0" width="960" height="1040" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Designer" order="0" />
       <window_info id="Capture Tool" order="1" />
@@ -305,13 +312,13 @@
       <window_info id="Image Layers" order="4" />
       <window_info content_ui="combo" id="Project" order="5" visible="true" weight="0.24555555" />
       <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="0" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="0" visible="true" weight="0.3296582" />
       <window_info anchor="bottom" id="Event Log" order="1" sideWeight="0.5011111" side_tool="true" weight="0.3351709" />
       <window_info anchor="bottom" id="Build" order="2" weight="0.32936078" />
       <window_info anchor="bottom" id="Version Control" order="3" />
       <window_info anchor="bottom" id="Message" order="4" />
       <window_info anchor="bottom" id="Find" order="5" weight="0.3296582" />
-      <window_info active="true" anchor="bottom" id="Run" order="6" sideWeight="0.49888888" visible="true" weight="0.3351709" />
+      <window_info anchor="bottom" id="Run" order="6" sideWeight="0.49888888" weight="0.3351709" />
       <window_info anchor="bottom" id="Debug" order="7" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
@@ -579,8 +586,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/aor/refactoring/example6/Tree.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="395">
-          <caret line="77" column="4" selection-start-line="77" selection-start-column="4" selection-end-line="77" selection-end-column="4" />
+        <state relative-caret-position="290">
+          <caret line="77" selection-start-line="77" selection-end-line="77" />
           <folding>
             <element signature="e#764#765#0" expanded="true" />
             <element signature="e#795#796#0" expanded="true" />
@@ -589,6 +596,9 @@
           </folding>
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
   <component name="masterDetails">
