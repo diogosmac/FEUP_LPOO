@@ -5,10 +5,6 @@ import com.googlecode.lanterna.graphics.TextGraphics;
 
 public class Coin extends Element {
 
-    public Coin() {
-        this(15, 15);
-    }
-
     public Coin(int x, int y) {
         super(x, y);
     }

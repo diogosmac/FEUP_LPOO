@@ -4,7 +4,6 @@ import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -177,9 +176,7 @@ public class Arena {
         }
     }
 
-    public void processKey(KeyStroke key) throws IOException {
-
-        // System.out.println(key);
+    public void processKey(KeyStroke key) {
 
         moveMonsters();
 
@@ -228,7 +225,6 @@ public class Arena {
     public void draw(TextGraphics graphics) {
         graphics.setBackgroundColor(TextColor.Factory.fromString("#336699"));
         graphics.fillRectangle(new TerminalPosition(0, 0), new TerminalSize(width, height), ' ');
-        // graphics.fillRectangle(new TerminalPosition(0, 0), new TerminalSize(width * 2, height * 2), ' ');
 
         for (Coin coin : coins) {
             coin.draw(graphics);

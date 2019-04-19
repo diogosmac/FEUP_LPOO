@@ -5,10 +5,6 @@ import com.googlecode.lanterna.graphics.TextGraphics;
 
 public class Monster extends Element {
 
-    public Monster() {
-        this(25, 25);
-    }
-
     public Monster(int x, int y) {
         super(x, y);
     }

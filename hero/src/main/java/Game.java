@@ -38,7 +38,7 @@ public class Game {
 
     }
 
-    private void processKey(KeyStroke key) throws IOException {
+    private void processKey(KeyStroke key) {
         arena.processKey(key);
     }
 
