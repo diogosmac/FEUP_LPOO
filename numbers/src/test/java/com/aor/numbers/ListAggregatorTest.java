@@ -10,8 +10,6 @@ import static org.junit.Assert.*;
 
 public class ListAggregatorTest {
 
-    private ListAggregator mockAggregator;
-
     public List<Integer> helper() {
         List<Integer> list = new ArrayList<>();
         list.add(1);
